@@ -1,0 +1,887 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Yahtzee Scorecard</title>
+</head>
+<div>
+<body>
+	<style>
+		table,td {
+		  border-style:solid;
+		  border-color: #96D4D4;
+		  border-collapse: collapse;
+		  text-align: center;}
+		  th {
+			background-color: rgba(35, 142, 142, 0.737);
+		  }
+
+		  tr{
+			height: 40px;
+		  }
+	
+	</style>	
+
+	<table style="width: 600px">  
+		<tr>
+		  <th style="width: 20%"> <u>UPPER SECTION </u></th>
+		  <th style="width: 20%"> HOW TO SCORE</th>
+		  <th style="width: 10%">Game #1</th>
+		  <th style="width: 10%">Game #2</th>
+		  <th style="width: 10%">Game #3</th>
+		  <th style="width: 10%">Game #4</th>
+		  <th style="width: 10%">Game #5</th>
+		  <th style="width: 10%">Game #6</th>
+		</tr>
+		<tr>
+		  <td>Fives = 1</td>
+		  <td>Count & Add Only Aces</td>
+		  <td> <input id="PtsAce1" onchange="updateSums()"
+			 style="width:73%; font-size: 15px; text-align:center"; type="text"> </td>
+		  <td> <input id="PtsAce2" onchange="updateSums()"
+			style="width:73%; font-size: 15px; text-align:center"; type="text"></td>
+		  <td> <input id="PtsAce3" onchange="updateSums()"
+			style="width:73%; font-size: 15px; text-align:center"; type="text"></td>
+		  <td> <input id="PtsAce4" onchange="updateSums()"
+			style="width:73%; font-size: 15px; text-align:center"; type="text"></td>
+		  <td> <input id="PtsAce5" onchange="updateSums()"
+			style="width:73%; font-size: 15px; text-align:center"; type="text"></td>
+		  <td> <input id="PtsAce6" onchange="updateSums()"
+			style="width:73%; font-size: 15px; text-align:center"; type="text"></td>
+
+		</tr>
+		<tr>
+			<td>Twos = 2</td>
+			<td>Count & Add Only Twos</td>
+			<td> <input id="PtsTwo1" onchange="updateSums()"
+				style="width:73%; font-size: 15px; text-align:center"; type="text"> </td>
+			 <td> <input id="PtsTwo2" onchange="updateSums()"
+			   style="width:73%; font-size: 15px; text-align:center"; type="text"></td>
+			 <td> <input id="PtsTwo3" onchange="updateSums()"
+			   style="width:73%; font-size: 15px; text-align:center"; type="text"></td>
+			 <td> <input id="PtsTwo4" onchange="updateSums()"
+			   style="width:73%; font-size: 15px; text-align:center"; type="text"></td>
+			 <td> <input id="PtsTwo5" onchange="updateSums()"
+			   style="width:73%; font-size: 15px; text-align:center"; type="text"></td>
+			 <td> <input id="PtsTwo6" onchange="updateSums()"
+			   style="width:73%; font-size: 15px; text-align:center"; type="text"></td>
+		</tr>
+		<tr>
+			<td>Threes = 3</td>
+			<td>Count & Add Only Threes</td>
+			<td> <input id="PtsThree1" onchange="updateSums()"
+				style="width:73%; font-size: 15px; text-align:center"; type="text"> </td>
+			 <td> <input id="PtsThree2" onchange="updateSums()"
+			   style="width:73%; font-size: 15px; text-align:center"; type="text"></td>
+			 <td> <input id="PtsThree3" onchange="updateSums()"
+			   style="width:73%; font-size: 15px; text-align:center"; type="text"></td>
+			 <td> <input id="PtsThree4" onchange="updateSums()"
+			   style="width:73%; font-size: 15px; text-align:center"; type="text"></td>
+			 <td> <input id="PtsThree5" onchange="updateSums()"
+			   style="width:73%; font-size: 15px; text-align:center"; type="text"></td>
+			 <td> <input id="PtsThree6" onchange="updateSums()"
+			   style="width:73%; font-size: 15px; text-align:center"; type="text"></td>
+		</tr>
+		<tr>
+			<td>Fours = 4</td>
+			<td>Count & Add Only Fours</td>
+			<td> <input id="PtsFour1" onchange="updateSums()"
+				style="width:73%; font-size: 15px; text-align:center"; type="text"> </td>
+			 <td> <input id="PtsFour2" onchange="updateSums()"
+			   style="width:73%; font-size: 15px; text-align:center"; type="text"></td>
+			 <td> <input id="PtsFour3" onchange="updateSums()"
+			   style="width:73%; font-size: 15px; text-align:center"; type="text"></td>
+			 <td> <input id="PtsFour4" onchange="updateSums()"
+			   style="width:73%; font-size: 15px; text-align:center"; type="text"></td>
+			 <td> <input id="PtsFour5" onchange="updateSums()"
+			   style="width:73%; font-size: 15px; text-align:center"; type="text"></td>
+			 <td> <input id="PtsFour6" onchange="updateSums()"
+			   style="width:73%; font-size: 15px; text-align:center"; type="text"></td>
+		</tr>
+		<tr>
+			<td>Fives = 5</td>
+			<td>Count & Add Only Fives</td>
+			<td> <input id="PtsFive1" onchange="updateSums()"
+				style="width:73%; font-size: 15px; text-align:center"; type="text"> </td>
+			 <td> <input id="PtsFive2" onchange="updateSums()"
+			   style="width:73%; font-size: 15px; text-align:center"; type="text"></td>
+			 <td> <input id="PtsFive3" onchange="updateSums()"
+			   style="width:73%; font-size: 15px; text-align:center"; type="text"></td>
+			 <td> <input id="PtsFive4" onchange="updateSums()"
+			   style="width:73%; font-size: 15px; text-align:center"; type="text"></td>
+			 <td> <input id="PtsFive5" onchange="updateSums()"
+			   style="width:73%; font-size: 15px; text-align:center"; type="text"></td>
+			 <td> <input id="PtsFive6" onchange="updateSums()"
+			   style="width:73%; font-size: 15px; text-align:center"; type="text"></td>
+		</tr>
+		<tr>
+			<td>Sixes = 6</td>
+			<td>Count & Add Only Sixes</td>
+			<td> <input id="PtsSix1" onchange="updateSums()"
+				style="width:73%; font-size: 15px; text-align:center"; type="text"> </td>
+			 <td> <input id="PtsSix2" onchange="updateSums()"
+			   style="width:73%; font-size: 15px; text-align:center"; type="text"></td>
+			 <td> <input id="PtsSix3" onchange="updateSums()"
+			   style="width:73%; font-size: 15px; text-align:center"; type="text"></td>
+			 <td> <input id="PtsSix4" onchange="updateSums()"
+			   style="width:73%; font-size: 15px; text-align:center"; type="text"></td>
+			 <td> <input id="PtsSix5" onchange="updateSums()"
+			   style="width:73%; font-size: 15px; text-align:center"; type="text"></td>
+			 <td> <input id="PtsSix6" onchange="updateSums()"
+			   style="width:73%; font-size: 15px; text-align:center"; type="text"></td>
+		</tr>
+		<tr>
+			<td>  TOTAL SCORE  </td>
+			<td> <span style='font-size:35px'>&#8594;</span> </td>
+			<td> <input id="SubUpper1" 
+				 style="width:73%; font-size: 15px; text-align:center"; type="text"> </td>
+			<td><input id="SubUpper2" 
+				style="width:73%; font-size: 15px; text-align:center"; type="text"> </td>
+			<td><input id="SubUpper3" 
+				style="width:73%; font-size: 15px; text-align:center"; type="text"> </td>
+			<td><input id="SubUpper4" 
+				style="width:73%; font-size: 15px; text-align:center"; type="text"> </td>
+			<td><input id="SubUpper5" 
+				style="width:73%; font-size: 15px; text-align:center"; type="text"> </td>
+			<td> <input id="SubUpper6" 
+				style="width:73%; font-size: 15px; text-align:center"; type="text"></td>
+		</tr>
+		<tr>
+			<td> BONUS <span style='font-size:10px'> <br> if total score is ≥ 63 </span>  </td>
+			<td> Score 35 </td>
+			<td> <input id="Bonus1" 
+				 style="width:73%; font-size: 15px; text-align:center"; type="text"> </td>
+			<td><input id="Bonus2" 
+				style="width:73%; font-size: 15px; text-align:center"; type="text"> </td>
+			<td><input id="Bonus3" 
+				style="width:73%; font-size: 15px; text-align:center"; type="text"> </td>
+			<td> <input id="Bonus4" 
+				style="width:73%; font-size: 15px; text-align:center"; type="text"></td>
+			<td><input id="Bonus5" 
+				style="width:73%; font-size: 15px; text-align:center"; type="text"> </td>
+			<td><input id="Bonus6" 
+				style="width:73%; font-size: 15px; text-align:center"; type="text"></td>
+		</tr>
+		<tr>
+			<td> <strong> TOTAL </strong> <span style='font-size:10px'> <br> of upper section </span>  </td>
+			<td> <span style='font-size:35px'>&#8594;</span> </td>
+			<td> <input id="TotalUpper1" 
+				style="width:73%; font-size: 15px; text-align:center"; type="text"> </td>
+			<td> <input id="TotalUpper2" 
+				style="width:73%; font-size: 15px; text-align:center"; type="text"> </td>
+			<td>  <input id="TotalUpper3" 
+				style="width:73%; font-size: 15px; text-align:center"; type="text"></td>
+			<td> <input id="TotalUpper4" 
+				style="width:73%; font-size: 15px; text-align:center"; type="text"> </td>
+			<td>  <input id="TotalUpper5" 
+				style="width:73%; font-size: 15px; text-align:center"; type="text"></td>
+			<td> <input id="TotalUpper6" 
+				style="width:73%; font-size: 15px; text-align:center"; type="text"> </td>
+		</tr>
+	  </table>
+	  
+	<style>
+		table,td {
+		  border-style:solid;
+		  border-color: #96D4D4;
+		  border-collapse: collapse;
+		  text-align: center;}
+		  th {
+			background-color: rgb(255, 255, 255);
+		  }
+		  tr{
+			height: 40px;
+		  }
+		
+	</style>	
+	<table style="width: 600px">	  
+		<tr>
+		  <th style="width: 20%"> <u> LOWER SECTION </u> </th>
+		  <th style="width: 20%"> </th>
+		  <th style="width: 10%"> </th>
+		  <th style="width: 10%"> </th>
+		  <th style="width: 10%"> </th>
+		  <th style="width: 10%"> </th>
+		  <th style="width: 10%"> </th>
+		  <th style="width: 10%"> </th>
+		</tr>
+		<tr>
+		  <td>3 of a kind</td>
+		  <td>Add Total Of All Dice</td>
+		  <td> <input id="Threekind1" onchange="updateSums()"
+			style="width:73%; font-size: 15px; text-align:center"; type="text"> </td>
+		  <td><input id="Threekind2" onchange="updateSums()"
+			style="width:73%; font-size: 15px; text-align:center"; type="text"> </td>
+		  <td><input id="Threekind3" onchange="updateSums()"
+			style="width:73%; font-size: 15px; text-align:center"; type="text"> </td>
+		  <td> <input id="Threekind4" onchange="updateSums()"
+			style="width:73%; font-size: 15px; text-align:center"; type="text"></td>
+		  <td><input id="Threekind5" onchange="updateSums()"
+			style="width:73%; font-size: 15px; text-align:center"; type="text"> </td>
+		  <td> <input id="Threekind6" onchange="updateSums()"
+			style="width:73%; font-size: 15px; text-align:center"; type="text">
+		</td>
+
+		</tr>
+		<tr>
+			<td>4 of a kind</td>
+		    <td>Add Total Of All Dice</td>
+			  <td> <input id="Fourkind1" onchange="updateSums()"
+				style="width:73%; font-size: 15px; text-align:center"; type="text"> </td>
+			  <td><input id="Fourkind2" onchange="updateSums()"
+				style="width:73%; font-size: 15px; text-align:center"; type="text"> </td>
+			  <td><input id="Fourkind3" onchange="updateSums()"
+				style="width:73%; font-size: 15px; text-align:center"; type="text"> </td>
+			  <td> <input id="Fourkind4" onchange="updateSums()"
+				style="width:73%; font-size: 15px; text-align:center"; type="text"></td>
+			  <td><input id="Fourkind5" onchange="updateSums()"
+				style="width:73%; font-size: 15px; text-align:center"; type="text"> </td>
+			  <td> <input id="Fourkind6" onchange="updateSums()"
+				style="width:73%; font-size: 15px; text-align:center"; type="text">
+			</td>
+		</tr>
+		<tr>
+			<td>Full House</td>
+			<td>SCORE 25</td>
+			<td> <input id="Fullhouse1" onchange="updateSums()"
+				style="width:73%; font-size: 15px; text-align:center"; type="text"> </td>
+			  <td><input id="Fullhouse2" onchange="updateSums()"
+				style="width:73%; font-size: 15px; text-align:center"; type="text"> </td>
+			  <td><input id="Fullhouse3" onchange="updateSums()"
+				style="width:73%; font-size: 15px; text-align:center"; type="text"> </td>
+			  <td> <input id="Fullhouse4" onchange="updateSums()"
+				style="width:73%; font-size: 15px; text-align:center"; type="text"></td>
+			  <td><input id="Fullhouse5" onchange="updateSums()"
+				style="width:73%; font-size: 15px; text-align:center"; type="text"> </td>
+			  <td> <input id="Fullhouse6" onchange="updateSums()"
+				style="width:73%; font-size: 15px; text-align:center"; type="text">
+			</td>
+		</tr>
+		<tr>
+			<td>Low Straight</td>
+			<td>SCORE 30</td>
+			 <td> <input id="Lowstraight1" onchange="updateSums()"
+				style="width:73%; font-size: 15px; text-align:center"; type="text"> </td>
+			  <td><input id="Lowstraight2" onchange="updateSums()"
+				style="width:73%; font-size: 15px; text-align:center"; type="text"> </td>
+			  <td><input id="Lowstraight3" onchange="updateSums()"
+				style="width:73%; font-size: 15px; text-align:center"; type="text"> </td>
+			  <td> <input id="Lowstraight4" onchange="updateSums()"
+				style="width:73%; font-size: 15px; text-align:center"; type="text"></td>
+			  <td><input id="Lowstraight5" onchange="updateSums()"
+				style="width:73%; font-size: 15px; text-align:center"; type="text"> </td>
+			  <td> <input id="Lowstraight6" onchange="updateSums()"
+				style="width:73%; font-size: 15px; text-align:center"; type="text">
+			</td>
+		</tr>
+		<tr>
+			<td>High Straight</td>
+			<td>SCORE 40</td>
+			<td> <input id="Highstraight1" onchange="updateSums()"
+				style="width:73%; font-size: 15px; text-align:center"; type="text"> </td>
+			  <td><input id="Highstraight2" onchange="updateSums()"
+				style="width:73%; font-size: 15px; text-align:center"; type="text"> </td>
+			  <td><input id="Highstraight3" onchange="updateSums()"
+				style="width:73%; font-size: 15px; text-align:center"; type="text"> </td>
+			  <td> <input id="Highstraight4" onchange="updateSums()"
+				style="width:73%; font-size: 15px; text-align:center"; type="text"></td>
+			  <td><input id="Highstraight5" onchange="updateSums()"
+				style="width:73%; font-size: 15px; text-align:center"; type="text"> </td>
+			  <td> <input id="Highstraight6" onchange="updateSums()"
+				style="width:73%; font-size: 15px; text-align:center"; type="text">
+			</td>
+		</tr>
+		<tr>
+			<td> YAHTZEE </td>
+			<td>SCORE 50</td>
+			<td> <input id="Yahtzee1" onchange="updateSums()"
+				style="width:73%; font-size: 15px; text-align:center"; type="text"> </td>
+			  <td><input id="Yahtzee2" onchange="updateSums()"
+				style="width:73%; font-size: 15px; text-align:center"; type="text"> </td>
+			  <td><input id="Yahtzee3" onchange="updateSums()"
+				style="width:73%; font-size: 15px; text-align:center"; type="text"> </td>
+			  <td> <input id="Yahtzee4" onchange="updateSums()"
+				style="width:73%; font-size: 15px; text-align:center"; type="text"></td>
+			  <td><input id="Yahtzee5" onchange="updateSums()"
+				style="width:73%; font-size: 15px; text-align:center"; type="text"> </td>
+			  <td> <input id="Yahtzee6" onchange="updateSums()"
+				style="width:73%; font-size: 15px; text-align:center"; type="text">
+			</td>
+		</tr>
+		<tr>
+			<td> Chance </td>
+			<td> Score Total Of All Dice </td>
+			<td> <input id="Chance1" onchange="updateSums()"
+				style="width:73%; font-size: 15px; text-align:center"; type="text"> </td>
+			  <td><input id="Chance2" onchange="updateSums()"
+				style="width:73%; font-size: 15px; text-align:center"; type="text"> </td>
+			  <td><input id="Chance3" onchange="updateSums()"
+				style="width:73%; font-size: 15px; text-align:center"; type="text"> </td>
+			  <td> <input id="Chance4" onchange="updateSums()"
+				style="width:73%; font-size: 15px; text-align:center"; type="text"></td>
+			  <td><input id="Chance5" onchange="updateSums()"
+				style="width:73%; font-size: 15px; text-align:center"; type="text"> </td>
+			  <td> <input id="Chance6" onchange="updateSums()"
+				style="width:73%; font-size: 15px; text-align:center"; type="text">
+			</td>
+		</tr>
+		<tr>
+			<td> <i> Yahtzee Bonus </i> </td>
+			<td> <i> SCORE 100 </i> </td>
+			<td> <input id="Yahtzeebonus1" onchange="updateSums()"
+				style="width:73%; font-size: 15px; text-align:center"; type="text"> </td>
+			  <td><input id="Yahtzeebonus2" onchange="updateSums()"
+				style="width:73%; font-size: 15px; text-align:center"; type="text"> </td>
+			  <td><input id="Yahtzeebonus3" onchange="updateSums()"
+				style="width:73%; font-size: 15px; text-align:center"; type="text"> </td>
+			  <td> <input id="Yahtzeebonus4" onchange="updateSums()"
+				style="width:73%; font-size: 15px; text-align:center"; type="text"></td>
+			  <td><input id="Yahtzeebonus5" onchange="updateSums()"
+				style="width:73%; font-size: 15px; text-align:center"; type="text"> </td>
+			  <td> <input id="Yahtzeebonus6" onchange="updateSums()"
+				style="width:73%; font-size: 15px; text-align:center"; type="text">
+			</td>
+		</tr>
+		<tr>
+			<td> <strong> TOTAL  </strong> <span style='font-size:10px'> <br> of lower section </span>  </td>
+			<td> <span style='font-size:35px'>&#8594;</span>  </td>
+			<td> <input id="TotalLower1" 
+				style="width:73%; font-size: 15px; text-align:center"; type="text"> </td>
+			<td> <input id="TotalLower2" 
+				style="width:73%; font-size: 15px; text-align:center"; type="text"> </td>
+			<td>  <input id="TotalLower3" 
+				style="width:73%; font-size: 15px; text-align:center"; type="text"></td>
+			<td> <input id="TotalLower4" 
+				style="width:73%; font-size: 15px; text-align:center"; type="text"> </td>
+			<td>  <input id="TotalLower5" 
+				style="width:73%; font-size: 15px; text-align:center"; type="text"></td>
+			<td> <input id="TotalLower6" 
+				style="width:73%; font-size: 15px; text-align:center"; type="text"> </td>
+		</tr>
+		<tr>
+			<td> TOTAL <span style='font-size:10px'> <br> of upper section </span>  </td>
+			<td> <span style='font-size:35px'>&#8594;</span> </td>
+			<td> <input id="TotalUpper1b" 
+				style="width:73%; font-size: 15px; text-align:center"; type="text"> </td>
+			<td> <input id="TotalUpper2b" 
+				style="width:73%; font-size: 15px; text-align:center"; type="text"> </td>
+			<td>  <input id="TotalUpper3b" 
+				style="width:73%; font-size: 15px; text-align:center"; type="text"></td>
+			<td> <input id="TotalUpper4b" 
+				style="width:73%; font-size: 15px; text-align:center"; type="text"> </td>
+			<td>  <input id="TotalUpper5b" 
+				style="width:73%; font-size: 15px; text-align:center"; type="text"></td>
+			<td> <input id="TotalUpper6b" 
+				style="width:73%; font-size: 15px; text-align:center"; type="text"> </td>
+			
+		</tr>
+		<tr>
+			<td> <strong> GRAND TOTAL </strong> </td>
+			<td>  <span style='font-size:35px'>&#8594;</span> </td>
+			<td> <input id="GrandTotal1" 
+				style="width:73%; font-size: 15px; text-align:center"; type="text"> </td>
+			<td> <input id="GrandTotal2" 
+				style="width:73%; font-size: 15px; text-align:center"; type="text"> </td>
+			<td>  <input id="GrandTotal3" 
+				style="width:73%; font-size: 15px; text-align:center"; type="text"></td>
+			<td> <input id="GrandTotal4" 
+				style="width:73%; font-size: 15px; text-align:center"; type="text"> </td>
+			<td>  <input id="GrandTotal5" 
+				style="width:73%; font-size: 15px; text-align:center"; type="text"></td>
+			<td> <input id="GrandTotal6" 
+				style="width:73%; font-size: 15px; text-align:center"; type="text"> </td>
+		</tr>
+	  </table>
+	  
+	<script language="javascript"> 
+
+    	function updateSums(){
+			
+			'UPDATES GAME 1'
+
+			document.getElementById("SubUpper1").value=
+			makemyvalue("PtsAce1")+
+			makemyvalue("PtsTwo1")+
+			makemyvalue("PtsThree1")+
+			makemyvalue("PtsFour1")+
+			makemyvalue("PtsFive1")+
+			makemyvalue("PtsSix1")
+
+			if (makemyvalue("SubUpper1")>62)
+			document.getElementById("Bonus1").value= 35
+			else 
+			document.getElementById("Bonus1").value= 0
+			
+
+			document.getElementById("TotalUpper1").value=
+			makemyvalue("SubUpper1")+makemyvalue("Bonus1")
+
+			document.getElementById("TotalLower1").value=
+			makemyvalue("Threekind1")+
+			makemyvalue("Fourkind1")+
+			makemyvalue("Fullhouse1")+
+			makemyvalue("Lowstraight1")+
+			makemyvalue("Highstraight1")+
+			makemyvalue("Yahtzee1")+
+			makemyvalue("Chance1")+
+			makemyvalue("Yahtzeebonus1")
+
+			document.getElementById("TotalUpper1b").value=
+			makemyvalue("SubUpper1")+makemyvalue("Bonus1")
+
+			document.getElementById("GrandTotal1").value=
+			makemyvalue("TotalUpper1")+makemyvalue("TotalLower1")
+
+            'GAME 1 CONTROLS'
+
+			var Twocheck = makemyvalue("PtsTwo1")/2
+			if (!Number.isInteger(Twocheck))
+			alert("Twos must be a multiple of 2")
+
+			var Threecheck = makemyvalue("PtsThree1")/3
+			if (!Number.isInteger(Threecheck))
+			alert("Threes must be a multiple of 3")
+
+			var Fourcheck = makemyvalue("PtsFour1")/4
+			if (!Number.isInteger(Fourcheck))
+			alert("Fours must be a multiple of 4")
+
+			var Fivecheck = makemyvalue("PtsFive1")/5
+			if (!Number.isInteger(Fivecheck))
+			alert("Fives must be a multiple of 5")
+
+			var Sixcheck = makemyvalue("PtsSix1")/6
+			if (!Number.isInteger(Sixcheck))
+			alert("Sixes must be a multiple of 6")
+
+			var Fullhousecheck = makemyvalue("Fullhouse1")
+			if (Fullhousecheck != 25 && Fullhousecheck != 0)
+			alert("Full House is worth 25 points")
+
+			var Lowstraightcheck = makemyvalue("Lowstraight1")
+			if (Lowstraightcheck != 30 && Lowstraightcheck != 0)
+			alert("Low Straight is worth 30 points")
+
+			var Highstraightcheck = makemyvalue("Highstraight1")
+			if (Highstraightcheck != 40 && Highstraightcheck != 0)
+			alert("High Straight is worth 40 points")
+
+			var Yahtzeecheck = makemyvalue("Yahtzee1")
+			if (Yahtzeecheck != 50 && Yahtzeecheck != 0)
+			alert("Yahtzee is worth 50 points")
+
+			var Yahtzeebonuscheck = makemyvalue("Yahtzeebonus1")/100
+			if (!Number.isInteger(Yahtzeebonuscheck))
+			alert("Yahtzee Bonus must be a multiple of 100")
+
+			
+
+			
+
+			'UPDATES GAME 2'
+
+			document.getElementById("SubUpper2").value=
+			makemyvalue("PtsAce2")+
+			makemyvalue("PtsTwo2")+
+			makemyvalue("PtsThree2")+
+			makemyvalue("PtsFour2")+
+			makemyvalue("PtsFive2")+
+			makemyvalue("PtsSix2")
+
+			if (makemyvalue("SubUpper2")>62)
+			document.getElementById("Bonus2").value= 35
+			else 
+			document.getElementById("Bonus2").value= 0
+			
+
+			document.getElementById("TotalUpper2").value=
+			makemyvalue("SubUpper2")+makemyvalue("Bonus2")
+
+			document.getElementById("TotalLower2").value=
+			makemyvalue("Threekind2")+
+			makemyvalue("Fourkind2")+
+			makemyvalue("Fullhouse2")+
+			makemyvalue("Lowstraight2")+
+			makemyvalue("Highstraight2")+
+			makemyvalue("Yahtzee2")+
+			makemyvalue("Chance2")+
+			makemyvalue("Yahtzeebonus2")
+
+			document.getElementById("TotalUpper2b").value=
+			makemyvalue("SubUpper2")+makemyvalue("Bonus2")
+
+			document.getElementById("GrandTotal2").value=
+			makemyvalue("TotalUpper2")+makemyvalue("TotalLower2")
+
+            'GAME 2 CONTROLS'
+
+			var Twocheck = makemyvalue("PtsTwo2")/2
+			if (!Number.isInteger(Twocheck))
+			alert("Twos must be a multiple of 2")
+
+			var Threecheck = makemyvalue("PtsThree2")/3
+			if (!Number.isInteger(Threecheck))
+			alert("Threes must be a multiple of 3")
+
+			var Fourcheck = makemyvalue("PtsFour2")/4
+			if (!Number.isInteger(Fourcheck))
+			alert("Fours must be a multiple of 4")
+
+			var Fivecheck = makemyvalue("PtsFive2")/5
+			if (!Number.isInteger(Fivecheck))
+			alert("Fives must be a multiple of 5")
+
+			var Sixcheck = makemyvalue("PtsSix2")/6
+			if (!Number.isInteger(Sixcheck))
+			alert("Sixes must be a multiple of 6")
+
+			var Fullhousecheck = makemyvalue("Fullhouse2")
+			if (Fullhousecheck != 25 && Fullhousecheck != 0)
+			alert("Full House is worth 25 points")
+
+			var Lowstraightcheck = makemyvalue("Lowstraight2")
+			if (Lowstraightcheck != 30 && Lowstraightcheck != 0)
+			alert("Low Straight is worth 30 points")
+
+			var Highstraightcheck = makemyvalue("Highstraight2")
+			if (Highstraightcheck != 40 && Highstraightcheck != 0)
+			alert("High Straight is worth 40 points")
+
+			var Yahtzeecheck = makemyvalue("Yahtzee2")
+			if (Yahtzeecheck != 50 && Yahtzeecheck != 0)
+			alert("Yahtzee is worth 50 points")
+
+			var Yahtzeebonuscheck = makemyvalue("Yahtzeebonus2")/100
+			if (!Number.isInteger(Yahtzeebonuscheck))
+			alert("Yahtzee Bonus must be a multiple of 100")
+
+
+			'UPDATES GAME 3'
+			
+			document.getElementById("SubUpper3").value=
+			makemyvalue("PtsAce3")+
+			makemyvalue("PtsTwo3")+
+			makemyvalue("PtsThree3")+
+			makemyvalue("PtsFour3")+
+			makemyvalue("PtsFive3")+
+			makemyvalue("PtsSix3")
+
+			if (makemyvalue("SubUpper3")>62)
+			document.getElementById("Bonus3").value= 35
+			else 
+			document.getElementById("Bonus3").value= 0
+			
+
+			document.getElementById("TotalUpper3").value=
+			makemyvalue("SubUpper3")+makemyvalue("Bonus3")
+
+			document.getElementById("TotalLower3").value=
+			makemyvalue("Threekind3")+
+			makemyvalue("Fourkind3")+
+			makemyvalue("Fullhouse3")+
+			makemyvalue("Lowstraight3")+
+			makemyvalue("Highstraight3")+
+			makemyvalue("Yahtzee3")+
+			makemyvalue("Chance3")+
+			makemyvalue("Yahtzeebonus3")
+
+			document.getElementById("TotalUpper3b").value=
+			makemyvalue("SubUpper3")+makemyvalue("Bonus3")
+
+			document.getElementById("GrandTotal3").value=
+			makemyvalue("TotalUpper3")+makemyvalue("TotalLower3")
+
+            'GAME 3 CONTROLS'
+
+			var Twocheck = makemyvalue("PtsTwo3")/2
+			if (!Number.isInteger(Twocheck))
+			alert("Twos must be a multiple of 2")
+
+			var Threecheck = makemyvalue("PtsThree3")/3
+			if (!Number.isInteger(Threecheck))
+			alert("Threes must be a multiple of 3")
+
+			var Fourcheck = makemyvalue("PtsFour3")/4
+			if (!Number.isInteger(Fourcheck))
+			alert("Fours must be a multiple of 4")
+
+			var Fivecheck = makemyvalue("PtsFive3")/5
+			if (!Number.isInteger(Fivecheck))
+			alert("Fives must be a multiple of 5")
+
+			var Sixcheck = makemyvalue("PtsSix3")/6
+			if (!Number.isInteger(Sixcheck))
+			alert("Sixes must be a multiple of 6")
+
+			var Fullhousecheck = makemyvalue("Fullhouse3")
+			if (Fullhousecheck != 25 && Fullhousecheck != 0)
+			alert("Full House is worth 25 points")
+
+			var Lowstraightcheck = makemyvalue("Lowstraight3")
+			if (Lowstraightcheck != 30 && Lowstraightcheck != 0)
+			alert("Low Straight is worth 30 points")
+
+			var Highstraightcheck = makemyvalue("Highstraight3")
+			if (Highstraightcheck != 40 && Highstraightcheck != 0)
+			alert("High Straight is worth 40 points")
+
+			var Yahtzeecheck = makemyvalue("Yahtzee3")
+			if (Yahtzeecheck != 50 && Yahtzeecheck != 0)
+			alert("Yahtzee is worth 50 points")
+
+			var Yahtzeebonuscheck = makemyvalue("Yahtzeebonus3")/100
+			if (!Number.isInteger(Yahtzeebonuscheck))
+			alert("Yahtzee Bonus must be a multiple of 100")
+
+			'UPDATES GAME 4'
+			
+			document.getElementById("SubUpper4").value=
+			makemyvalue("PtsAce4")+
+			makemyvalue("PtsTwo4")+
+			makemyvalue("PtsThree4")+
+			makemyvalue("PtsFour4")+
+			makemyvalue("PtsFive4")+
+			makemyvalue("PtsSix4")
+
+			if (makemyvalue("SubUpper4")>62)
+			document.getElementById("Bonus4").value= 35
+			else 
+			document.getElementById("Bonus4").value= 0
+			
+
+			document.getElementById("TotalUpper4").value=
+			makemyvalue("SubUpper4")+makemyvalue("Bonus4")
+
+			document.getElementById("TotalLower4").value=
+			makemyvalue("Threekind4")+
+			makemyvalue("Fourkind4")+
+			makemyvalue("Fullhouse4")+
+			makemyvalue("Lowstraight4")+
+			makemyvalue("Highstraight4")+
+			makemyvalue("Yahtzee4")+
+			makemyvalue("Chance4")+
+			makemyvalue("Yahtzeebonus4")
+
+			document.getElementById("TotalUpper4b").value=
+			makemyvalue("SubUpper4")+makemyvalue("Bonus4")
+
+			document.getElementById("GrandTotal4").value=
+			makemyvalue("TotalUpper4")+makemyvalue("TotalLower4")
+
+            'GAME 4 CONTROLS'
+
+			var Twocheck = makemyvalue("PtsTwo4")/2
+			if (!Number.isInteger(Twocheck))
+			alert("Twos must be a multiple of 2")
+
+			var Threecheck = makemyvalue("PtsThree4")/3
+			if (!Number.isInteger(Threecheck))
+			alert("Threes must be a multiple of 3")
+
+			var Fourcheck = makemyvalue("PtsFour4")/4
+			if (!Number.isInteger(Fourcheck))
+			alert("Fours must be a multiple of 4")
+
+			var Fivecheck = makemyvalue("PtsFive4")/5
+			if (!Number.isInteger(Fivecheck))
+			alert("Fives must be a multiple of 5")
+
+			var Sixcheck = makemyvalue("PtsSix4")/6
+			if (!Number.isInteger(Sixcheck))
+			alert("Sixes must be a multiple of 6")
+
+			var Fullhousecheck = makemyvalue("Fullhouse4")
+			if (Fullhousecheck != 25 && Fullhousecheck != 0)
+			alert("Full House is worth 25 points")
+
+			var Lowstraightcheck = makemyvalue("Lowstraight4")
+			if (Lowstraightcheck != 30 && Lowstraightcheck != 0)
+			alert("Low Straight is worth 30 points")
+
+			var Highstraightcheck = makemyvalue("Highstraight4")
+			if (Highstraightcheck != 40 && Highstraightcheck != 0)
+			alert("High Straight is worth 40 points")
+
+			var Yahtzeecheck = makemyvalue("Yahtzee4")
+			if (Yahtzeecheck != 50 && Yahtzeecheck != 0)
+			alert("Yahtzee is worth 50 points")
+
+			var Yahtzeebonuscheck = makemyvalue("Yahtzeebonus4")/100
+			if (!Number.isInteger(Yahtzeebonuscheck))
+			alert("Yahtzee Bonus must be a multiple of 100")
+
+			'UPDATES GAME 5'
+			
+			document.getElementById("SubUpper5").value=
+			makemyvalue("PtsAce5")+
+			makemyvalue("PtsTwo5")+
+			makemyvalue("PtsThree5")+
+			makemyvalue("PtsFour5")+
+			makemyvalue("PtsFive5")+
+			makemyvalue("PtsSix5")
+
+			if (makemyvalue("SubUpper5")>62)
+			document.getElementById("Bonus5").value= 35
+			else 
+			document.getElementById("Bonus5").value= 0
+			
+
+			document.getElementById("TotalUpper5").value=
+			makemyvalue("SubUpper5")+makemyvalue("Bonus5")
+
+			document.getElementById("TotalLower5").value=
+			makemyvalue("Threekind5")+
+			makemyvalue("Fourkind5")+
+			makemyvalue("Fullhouse5")+
+			makemyvalue("Lowstraight5")+
+			makemyvalue("Highstraight5")+
+			makemyvalue("Yahtzee5")+
+			makemyvalue("Chance5")+
+			makemyvalue("Yahtzeebonus5")
+
+			document.getElementById("TotalUpper5b").value=
+			makemyvalue("SubUpper5")+makemyvalue("Bonus5")
+
+			document.getElementById("GrandTotal5").value=
+			makemyvalue("TotalUpper5")+makemyvalue("TotalLower5")
+
+            'GAME 5 CONTROLS'
+
+			var Twocheck = makemyvalue("PtsTwo5")/2
+			if (!Number.isInteger(Twocheck))
+			alert("Twos must be a multiple of 2")
+
+			var Threecheck = makemyvalue("PtsThree5")/3
+			if (!Number.isInteger(Threecheck))
+			alert("Threes must be a multiple of 3")
+
+			var Fourcheck = makemyvalue("PtsFour5")/4
+			if (!Number.isInteger(Fourcheck))
+			alert("Fours must be a multiple of 4")
+
+			var Fivecheck = makemyvalue("PtsFive5")/5
+			if (!Number.isInteger(Fivecheck))
+			alert("Fives must be a multiple of 5")
+
+			var Sixcheck = makemyvalue("PtsSix5")/6
+			if (!Number.isInteger(Sixcheck))
+			alert("Sixes must be a multiple of 6")
+
+			var Fullhousecheck = makemyvalue("Fullhouse5")
+			if (Fullhousecheck != 25 && Fullhousecheck != 0)
+			alert("Full House is worth 25 points")
+
+			var Lowstraightcheck = makemyvalue("Lowstraight5")
+			if (Lowstraightcheck != 30 && Lowstraightcheck != 0)
+			alert("Low Straight is worth 30 points")
+
+			var Highstraightcheck = makemyvalue("Highstraight5")
+			if (Highstraightcheck != 40 && Highstraightcheck != 0)
+			alert("High Straight is worth 40 points")
+
+			var Yahtzeecheck = makemyvalue("Yahtzee5")
+			if (Yahtzeecheck != 50 && Yahtzeecheck != 0)
+			alert("Yahtzee is worth 50 points")
+
+			var Yahtzeebonuscheck = makemyvalue("Yahtzeebonus5")/100
+			if (!Number.isInteger(Yahtzeebonuscheck))
+			alert("Yahtzee Bonus must be a multiple of 100")
+
+			'UPDATES GAME 6'
+			
+			document.getElementById("SubUpper6").value=
+			makemyvalue("PtsAce6")+
+			makemyvalue("PtsTwo6")+
+			makemyvalue("PtsThree6")+
+			makemyvalue("PtsFour6")+
+			makemyvalue("PtsFive6")+
+			makemyvalue("PtsSix6")
+
+			if (makemyvalue("SubUpper6")>62)
+			document.getElementById("Bonus6").value= 35
+			else 
+			document.getElementById("Bonus6").value= 0
+			
+
+			document.getElementById("TotalUpper6").value=
+			makemyvalue("SubUpper6")+makemyvalue("Bonus6")
+
+			document.getElementById("TotalLower6").value=
+			makemyvalue("Threekind6")+
+			makemyvalue("Fourkind6")+
+			makemyvalue("Fullhouse6")+
+			makemyvalue("Lowstraight6")+
+			makemyvalue("Highstraight6")+
+			makemyvalue("Yahtzee6")+
+			makemyvalue("Chance6")+
+			makemyvalue("Yahtzeebonus6")
+
+			document.getElementById("TotalUpper6b").value=
+			makemyvalue("SubUpper6")+makemyvalue("Bonus6")
+
+			document.getElementById("GrandTotal6").value=
+			makemyvalue("TotalUpper6")+makemyvalue("TotalLower6")
+
+            'GAME 6 CONTROLS'
+
+			var Twocheck = makemyvalue("PtsTwo6")/2
+			if (!Number.isInteger(Twocheck))
+			alert("Twos must be a multiple of 2")
+
+			var Threecheck = makemyvalue("PtsThree6")/3
+			if (!Number.isInteger(Threecheck))
+			alert("Threes must be a multiple of 3")
+
+			var Fourcheck = makemyvalue("PtsFour6")/4
+			if (!Number.isInteger(Fourcheck))
+			alert("Fours must be a multiple of 4")
+
+			var Fivecheck = makemyvalue("PtsFive6")/5
+			if (!Number.isInteger(Fivecheck))
+			alert("Fives must be a multiple of 5")
+
+			var Sixcheck = makemyvalue("PtsSix6")/6
+			if (!Number.isInteger(Sixcheck))
+			alert("Sixes must be a multiple of 6")
+
+			var Fullhousecheck = makemyvalue("Fullhouse6")
+			if (Fullhousecheck != 25 && Fullhousecheck != 0)
+			alert("Full House is worth 25 points")
+
+			var Lowstraightcheck = makemyvalue("Lowstraight6")
+			if (Lowstraightcheck != 30 && Lowstraightcheck != 0)
+			alert("Low Straight is worth 30 points")
+
+			var Highstraightcheck = makemyvalue("Highstraight6")
+			if (Highstraightcheck != 40 && Highstraightcheck != 0)
+			alert("High Straight is worth 40 points")
+
+			var Yahtzeecheck = makemyvalue("Yahtzee6")
+			if (Yahtzeecheck != 50 && Yahtzeecheck != 0)
+			alert("Yahtzee is worth 50 points")
+
+			var Yahtzeebonuscheck = makemyvalue("Yahtzeebonus6")/100
+			if (!Number.isInteger(Yahtzeebonuscheck))
+			alert("Yahtzee Bonus must be a multiple of 100")
+
+		}
+		 
+		function makemyvalue(id){
+			var cellvalue=document.getElementById(id).value
+			console.log(id)
+			console.log(cellvalue)
+			if(cellvalue=="")
+			return 0
+			else return parseInt(cellvalue)
+
+		}
+
+		
+
+	</script>
+
+	
+</body>
+</div>
+</html>
