@@ -10,7 +10,7 @@
     "display": "standalone",
     "icons": [
         {
-            "src": "/Yahtzee/yahtzee512.jpg",
+            "src": "/Yahtzee/yahtzee512.png",
             "sizes": "512x512"
         }
     ]
