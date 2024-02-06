@@ -3,7 +3,7 @@
     "name": "The Lost Yahtzee",
     "short_name": "Yahtzee",
     "description": "Etienne you are so awesome!!",
-    "start_url": "/",
+    "start_url": "/Yahtzee",
     "background_color": "#ffffff",
     "theme_color": "#2f3d58",
     "orientation": "any",
